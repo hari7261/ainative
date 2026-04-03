@@ -20,6 +20,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Comprehensive documentation
 - Example applications
 
+## [0.1.1] - 2026-04-04
+
+### Changed
+- Refreshed the CLI starter template with a modern responsive chat workspace
+- Upgraded the `basic-chat` example to match the new visual direction
+- Improved starter ergonomics with a stronger default layout and onboarding copy
+
+### Fixed
+- Preserved streaming state updates and cleaned up stream listeners correctly
+- Improved Windows and pnpm compatibility across build and test scripts
+- Added CLI test coverage and validated the full monorepo build, test, and E2E flow
+
 ## [0.1.0] - 2026-04-03
 
 ### Added

@@ -5,6 +5,7 @@
   --bg: #07111f;
   --bg-soft: rgba(10, 20, 36, 0.74);
   --panel: rgba(12, 23, 40, 0.82);
+  --panel-strong: rgba(16, 29, 49, 0.95);
   --border: rgba(145, 179, 223, 0.18);
   --text: #eff6ff;
   --muted: #9fb3cf;
@@ -111,13 +112,15 @@ body {
 .starter-brand h1 {
   margin: 1rem 0 0.85rem;
   font-family: 'Space Grotesk', sans-serif;
-  font-size: clamp(2.2rem, 5vw, 4.5rem);
-  line-height: 0.98;
+  font-size: clamp(2.35rem, 5vw, 4.75rem);
+  line-height: 0.96;
 }
 
 .starter-brand p {
   margin: 0;
+  max-width: 34rem;
   color: var(--muted);
+  font-size: 1rem;
   line-height: 1.7;
 }
 
@@ -143,6 +146,11 @@ body {
   font-weight: 700;
   letter-spacing: 0.12em;
   text-transform: uppercase;
+}
+
+.starter-feature-grid strong {
+  font-size: 1rem;
+  line-height: 1.45;
 }
 
 .starter-tips ul {
@@ -183,6 +191,7 @@ body {
 
 .starter-pane-subtitle {
   margin: 0;
+  max-width: 34rem;
   color: var(--muted);
   line-height: 1.6;
 }
@@ -214,10 +223,24 @@ body {
 .ai-pane-header {
   padding: 1.45rem 1.4rem 1.1rem;
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), transparent);
+}
+
+.ai-pane-status {
+  margin-top: 0.75rem;
+  color: #dce9fb;
+  font-size: 0.9rem;
+}
+
+.ai-pane-streaming-indicator {
+  color: var(--accent-strong);
 }
 
 .ai-pane-content {
   padding: 1.2rem 1.1rem;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.02), transparent 35%),
+    transparent;
 }
 
 .ai-pane-empty {
@@ -239,6 +262,7 @@ body {
   border: 1px solid rgba(255, 255, 255, 0.06);
   border-radius: 24px;
   background: var(--assistant);
+  backdrop-filter: blur(12px);
   box-shadow: 0 16px 32px rgba(0, 0, 0, 0.18);
 }
 
@@ -276,10 +300,35 @@ body {
 .ai-pane-input {
   padding: 1rem 1rem 1.1rem;
   border-top: 1px solid rgba(255, 255, 255, 0.08);
+  background: linear-gradient(180deg, transparent, rgba(0, 0, 0, 0.12));
 }
 
 .ai-input-container {
   gap: 0.75rem;
+}
+
+.ai-input-attachments {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.ai-input-attachment {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.45rem 0.7rem;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.05);
+  color: #dce9fb;
+}
+
+.ai-input-attachment button {
+  border: 0;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
 }
 
 .ai-input-main {
@@ -295,6 +344,7 @@ body {
   background: rgba(2, 7, 18, 0.45);
   color: var(--text);
   font: inherit;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
 }
 
 .ai-input-field::placeholder {
@@ -304,7 +354,9 @@ body {
 .ai-input-field:focus {
   outline: none;
   border-color: rgba(97, 217, 255, 0.45);
-  box-shadow: 0 0 0 4px rgba(97, 217, 255, 0.12);
+  box-shadow:
+    0 0 0 4px rgba(97, 217, 255, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
 }
 
 .ai-input-actions {
@@ -316,6 +368,7 @@ body {
 .ai-input-submit {
   min-height: 3.25rem;
   border-radius: 18px;
+  transition: transform 160ms ease, background 160ms ease, border-color 160ms ease;
 }
 
 .ai-input-btn {
@@ -332,9 +385,38 @@ body {
   font-weight: 700;
 }
 
+.ai-input-btn:hover,
+.ai-input-submit:hover {
+  transform: translateY(-1px);
+}
+
+.ai-input-btn:disabled,
+.ai-input-submit:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.ai-pane-error {
+  margin-bottom: 1rem;
+  padding: 0.9rem 1rem;
+  border: 1px solid rgba(255, 93, 93, 0.24);
+  border-radius: 18px;
+  background: rgba(255, 93, 93, 0.12);
+  color: #ffd5d5;
+}
+
 @media (max-width: 1080px) {
   .starter-layout {
     grid-template-columns: 1fr;
+  }
+
+  .starter-sidebar {
+    gap: 1rem;
+  }
+
+  .starter-chat-panel {
+    min-height: 70vh;
   }
 
   .starter-pane.ai-pane {
@@ -358,17 +440,27 @@ body {
   }
 
   .starter-pane-header,
-  .starter-pane-footer,
-  .ai-input-main {
+  .starter-pane-footer {
     flex-direction: column;
+  }
+
+  .ai-pane-header,
+  .ai-pane-content,
+  .ai-pane-input {
+    padding-left: 0.85rem;
+    padding-right: 0.85rem;
   }
 
   .ai-stream-message {
     max-width: 100%;
   }
 
+  .ai-input-main {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
   .ai-input-actions {
-    width: 100%;
     justify-content: space-between;
   }
 

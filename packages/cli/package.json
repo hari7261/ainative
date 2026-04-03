@@ -1,6 +1,6 @@
 {
   "name": "@hari7261/ainative-cli",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "AINative CLI tool",
   "type": "module",
   "bin": {
