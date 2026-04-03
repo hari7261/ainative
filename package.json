@@ -1,0 +1,56 @@
+{
+  "name": "ainative-monorepo",
+  "version": "0.1.0",
+  "private": true,
+  "description": "AI-native frontend framework for building LLM-driven interfaces",
+  "workspaces": [
+    "packages/*",
+    "examples/*"
+  ],
+  "scripts": {
+    "build": "tsx scripts/build-all.ts",
+    "test": "tsx scripts/test-all.ts",
+    "test:unit": "vitest run",
+    "test:e2e": "playwright test",
+    "dev": "turbo run dev --parallel",
+    "clean": "turbo run clean && rm -rf node_modules",
+    "lint": "eslint . --ext .ts,.tsx",
+    "format": "prettier --write \"**/*.{ts,tsx,json,md}\"",
+    "changeset": "changeset",
+    "version-packages": "changeset version",
+    "release": "tsx scripts/release.ts"
+  },
+  "devDependencies": {
+    "@changesets/cli": "^2.27.1",
+    "@playwright/test": "^1.42.1",
+    "@types/node": "^20.11.30",
+    "@typescript-eslint/eslint-plugin": "^7.3.1",
+    "@typescript-eslint/parser": "^7.3.1",
+    "eslint": "^8.57.0",
+    "prettier": "^3.2.5",
+    "tsx": "^4.7.1",
+    "turbo": "^1.12.5",
+    "typescript": "^5.4.2",
+    "vitest": "^1.4.0"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "pnpm": ">=8.0.0"
+  },
+  "packageManager": "pnpm@8.15.4",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hari7261/ainative.git"
+  },
+  "keywords": [
+    "ai",
+    "llm",
+    "frontend",
+    "framework",
+    "react",
+    "streaming",
+    "multimodal"
+  ],
+  "author": "AINative Contributors",
+  "license": "MIT"
+}
