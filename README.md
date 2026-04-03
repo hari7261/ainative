@@ -54,7 +54,7 @@ Native support for token-by-token updates via SSE and WebSocket protocols for fl
 Built on familiar React patterns - no need to learn a new paradigm, just enhance what you know.
 
 ### 🔌 **Universal Provider Support**
-Seamlessly integrate with OpenAI, Anthropic, Ollama, Google Gemini, and more providers.
+Seamlessly integrate with OpenAI, Anthropic, and Ollama providers.
 
 </td>
 <td width="50%">
@@ -183,7 +183,7 @@ graph TB
         H[OpenAI]
         I[Anthropic]
         J[Ollama]
-        K[Gemini]
+        K[Ollama]
     end
 
     A --> B

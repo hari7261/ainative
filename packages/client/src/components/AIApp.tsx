@@ -14,6 +14,7 @@ export interface AIAppProps {
 
 export const AIApp: React.FC<AIAppProps> = ({ config, children }) => {
   const appRef = useRef<AIAppRuntime | null>(null);
+  const [app, setApp] = useState<AIAppRuntime | null>(null);
   const [state, setState] = useState<AIState>({
     messages: [],
     context: {},
@@ -26,6 +27,7 @@ export const AIApp: React.FC<AIAppProps> = ({ config, children }) => {
     // Initialize the AI app
     if (!appRef.current) {
       appRef.current = new AIAppRuntime(config);
+      setApp(appRef.current);
 
       // Subscribe to state changes
       appRef.current.onStateChange((newState) => {
@@ -37,13 +39,14 @@ export const AIApp: React.FC<AIAppProps> = ({ config, children }) => {
       if (appRef.current) {
         appRef.current.destroy();
         appRef.current = null;
+        setApp(null);
       }
     };
   }, [config]);
 
-  if (!appRef.current) {
+  if (!app) {
     return null;
   }
 
-  return <>{children(state, appRef.current)}</>;
+  return <>{children(state, app)}</>;
 };

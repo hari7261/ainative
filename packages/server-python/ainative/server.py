@@ -10,8 +10,6 @@ from pydantic import BaseModel
 
 from .tools import ToolRegistry, built_in_tools
 from .streaming import stream_tokens
-from .providers.openai_provider import OpenAIProvider
-from .providers.ollama_provider import OllamaProvider
 
 
 class ActionRequest(BaseModel):
@@ -60,10 +58,14 @@ class AINativeServer:
 
         # Initialize providers
         if self.config.openai_api_key:
+            from .providers.openai_provider import OpenAIProvider
+
             self.providers["openai"] = OpenAIProvider(
                 api_key=self.config.openai_api_key,
                 model=self.config.openai_model,
             )
+
+        from .providers.ollama_provider import OllamaProvider
 
         self.providers["ollama"] = OllamaProvider(
             base_url=self.config.ollama_base_url,
@@ -172,10 +174,10 @@ class AINativeServer:
 
     async def health(self):
         """Health check"""
-        from datetime import datetime
+        from datetime import datetime, timezone
         return {
             "status": "ok",
-            "timestamp": datetime.utcnow().isoformat()
+            "timestamp": datetime.now(timezone.utc).isoformat()
         }
 
     def get_app(self) -> FastAPI:
@@ -190,3 +192,9 @@ class AINativeServer:
 def create_server(config: ServerConfig) -> AINativeServer:
     """Create AINative server"""
     return AINativeServer(config)
+
+
+def create_app(config: Optional[ServerConfig] = None) -> FastAPI:
+    """Create a FastAPI app for tests and embedding."""
+    server = create_server(config or ServerConfig(default_provider="ollama"))
+    return server.get_app()

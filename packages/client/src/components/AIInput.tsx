@@ -6,7 +6,7 @@
 import React, { useState, useRef, KeyboardEvent } from 'react';
 import { AudioRecorder } from '../multimodal/audio';
 import { ImageHandler } from '../multimodal/image';
-import { FileUploader, ProcessedFile } from '../multimodal/file';
+import { FileUploader } from '../multimodal/file';
 
 export interface AIInputProps {
   onSubmit: (message: string, attachments?: any[]) => void;

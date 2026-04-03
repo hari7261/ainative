@@ -29,6 +29,7 @@ export class AIApp {
   private reconciler: AIReconciler;
   private renderer: AIRenderer;
   private config: AppConfig;
+  private streamUnsubscribers: Array<() => void> = [];
 
   constructor(config: AppConfig) {
     this.config = config;
@@ -108,6 +109,7 @@ export class AIApp {
     };
 
     this.stateManager.setStreaming(true);
+    this.clearStreamListeners();
 
     // Collect tokens for the streaming message
     let streamedContent = '';
@@ -122,23 +124,25 @@ export class AIApp {
     const messages = this.stateManager.getState().messages;
     messageId = messages[messages.length - 1].id;
 
-    this.eventBus.on('stream-data', ({ payload }) => {
+    this.streamUnsubscribers.push(this.eventBus.on('stream-data', ({ payload }) => {
       if (payload.token) {
         streamedContent += payload.token;
         if (messageId) {
           this.stateManager.updateMessage(messageId, { content: streamedContent });
         }
       }
-    });
+    }));
 
-    this.eventBus.on('stream-end', () => {
+    this.streamUnsubscribers.push(this.eventBus.on('stream-end', () => {
       this.stateManager.setStreaming(false);
-    });
+      this.clearStreamListeners();
+    }));
 
-    this.eventBus.on('stream-error', ({ payload }) => {
+    this.streamUnsubscribers.push(this.eventBus.on('stream-error', ({ payload }) => {
       this.stateManager.setStreaming(false);
       this.stateManager.setError(new Error(payload.error));
-    });
+      this.clearStreamListeners();
+    }));
 
     await this.streaming.start(streamConfig, actionEvent);
   }
@@ -178,8 +182,14 @@ export class AIApp {
    */
   destroy(): void {
     this.streaming.stop();
+    this.clearStreamListeners();
     this.renderer.unmount();
     this.eventBus.clear();
+  }
+
+  private clearStreamListeners(): void {
+    this.streamUnsubscribers.forEach((unsubscribe) => unsubscribe());
+    this.streamUnsubscribers = [];
   }
 
   private setupEventHandlers(): void {

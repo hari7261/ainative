@@ -43,6 +43,7 @@ export async function initCommand(name?: string, options?: any) {
     const templatePath = path.join(__dirname, '../templates/project');
     if (fs.existsSync(templatePath)) {
       fs.copySync(templatePath, projectPath);
+      personalizeTemplate(projectPath, projectName);
     } else {
       // Create basic structure if template doesn't exist
       createBasicStructure(projectPath, projectName);
@@ -186,4 +187,16 @@ server.listen();
 `;
 
   fs.writeFileSync(path.join(projectPath, '.env.example'), envExample);
+}
+
+function personalizeTemplate(projectPath: string, projectName: string) {
+  const packageJsonPath = path.join(projectPath, 'package.json');
+
+  if (!fs.existsSync(packageJsonPath)) {
+    return;
+  }
+
+  const packageJson = fs.readJsonSync(packageJsonPath);
+  packageJson.name = projectName;
+  fs.writeJsonSync(packageJsonPath, packageJson, { spaces: 2 });
 }

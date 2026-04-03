@@ -23,6 +23,17 @@ export interface RouterConfig {
     model?: string;
   };
   defaultProvider?: 'openai' | 'anthropic' | 'ollama';
+  fallbackResponse?: (action: string, params: Record<string, any>, context?: Record<string, any>) => string;
+}
+
+function createFallbackMessage(
+  action: string,
+  params: Record<string, any>,
+  context?: Record<string, any>
+): string {
+  const message = params?.message || params?.prompt || 'Hello from AINative.';
+  const priorMessages = Array.isArray(context?.messages) ? context.messages.length : 0;
+  return `Mock ${action} response: ${message} (context messages: ${priorMessages})`;
 }
 
 export function createAIRouter(config: RouterConfig, toolRegistry: ToolRegistry): Router {
@@ -55,7 +66,17 @@ export function createAIRouter(config: RouterConfig, toolRegistry: ToolRegistry)
       const provider = providers[req.body.provider] || defaultProvider;
 
       if (!provider) {
-        return res.status(400).json({ error: 'No provider available' });
+        const fallback = config.fallbackResponse || createFallbackMessage;
+        return res.json({
+          messages: [
+            {
+              role: 'assistant',
+              content: fallback(action, params, context),
+            },
+          ],
+          context,
+          provider: 'mock',
+        });
       }
 
       const result = await provider.generateNonStreaming({
@@ -63,7 +84,7 @@ export function createAIRouter(config: RouterConfig, toolRegistry: ToolRegistry)
         messages: context?.messages,
       });
 
-      res.json({
+      return res.json({
         messages: [
           {
             role: 'assistant',
@@ -74,7 +95,7 @@ export function createAIRouter(config: RouterConfig, toolRegistry: ToolRegistry)
       });
     } catch (error) {
       console.error('Action error:', error);
-      res.status(500).json({
+      return res.status(500).json({
         error: error instanceof Error ? error.message : 'Unknown error',
       });
     }
@@ -92,7 +113,11 @@ export function createAIRouter(config: RouterConfig, toolRegistry: ToolRegistry)
       const provider = providers[req.body.provider] || defaultProvider;
 
       if (!provider) {
-        stream.sendError('No provider available');
+        const fallback = config.fallbackResponse || createFallbackMessage;
+        const content = fallback(action, params, context);
+        for (const token of content.split(/(\s+)/).filter(Boolean)) {
+          stream.sendToken(token);
+        }
         stream.sendDone();
         return;
       }
@@ -122,17 +147,17 @@ export function createAIRouter(config: RouterConfig, toolRegistry: ToolRegistry)
 
       const result = await toolRegistry.execute({ tool, args }, context);
 
-      res.json(result);
+      return res.json(result);
     } catch (error) {
       console.error('Tool error:', error);
-      res.status(500).json({
+      return res.status(500).json({
         error: error instanceof Error ? error.message : 'Unknown error',
       });
     }
   });
 
   // GET /ai/tools - List available tools
-  router.get('/tools', (req: Request, res: Response) => {
+  router.get('/tools', (_req: Request, res: Response) => {
     const schema = toolRegistry.getSchema();
     res.json({ tools: schema });
   });

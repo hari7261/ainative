@@ -5,6 +5,8 @@ import { initCommand } from './commands/init';
 import { devCommand } from './commands/dev';
 import { buildCommand } from './commands/build';
 import { doctorCommand } from './commands/doctor';
+import { previewCommand } from './commands/preview';
+import { addProviderCommand } from './commands/add-provider';
 
 const program = new Command();
 
@@ -33,8 +35,20 @@ program
   .action(buildCommand);
 
 program
+  .command('preview')
+  .description('Preview the production build')
+  .option('-p, --port <port>', 'Port number', '4173')
+  .action(previewCommand);
+
+program
   .command('doctor')
   .description('Check system dependencies and configuration')
   .action(doctorCommand);
+
+program
+  .command('add-provider')
+  .description('Print environment setup for a provider')
+  .argument('<name>', 'Provider name')
+  .action(addProviderCommand);
 
 program.parse();

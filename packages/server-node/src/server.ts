@@ -45,7 +45,7 @@ export class AINativeServer {
     this.app.use('/ai', aiRouter);
 
     // Health check
-    this.app.get('/health', (req, res) => {
+    this.app.get('/health', (_req, res) => {
       res.json({ status: 'ok', timestamp: new Date().toISOString() });
     });
   }

@@ -27,6 +27,8 @@ export class StreamingEngine {
   private websocket: WebSocket | null = null;
   private reconnectAttempts = 0;
   private isStreaming = false;
+  private lastConfig: StreamConfig | null = null;
+  private lastPayload: any = null;
 
   constructor(eventBus: EventBus) {
     this.eventBus = eventBus;
@@ -38,6 +40,8 @@ export class StreamingEngine {
     }
 
     this.isStreaming = true;
+    this.lastConfig = { ...config };
+    this.lastPayload = data;
     this.eventBus.emit('stream-start', { config, data });
 
     const method = config.method === 'AUTO' ? this.detectBestMethod() : config.method || 'SSE';
@@ -142,7 +146,7 @@ export class StreamingEngine {
         }
       };
 
-      this.websocket.onerror = (error) => {
+      this.websocket.onerror = () => {
         this.eventBus.emit('stream-error', { error: 'WebSocket error' });
         reject(new ConnectionError('WebSocket connection failed'));
       };
@@ -212,7 +216,9 @@ export class StreamingEngine {
     if (config.reconnect && this.reconnectAttempts < (config.maxReconnectAttempts || 3)) {
       this.reconnectAttempts++;
       setTimeout(() => {
-        this.start(config, {});
+        if (this.lastConfig) {
+          this.start(this.lastConfig, this.lastPayload);
+        }
       }, config.reconnectDelay || 1000);
     }
   }

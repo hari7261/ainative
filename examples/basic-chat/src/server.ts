@@ -1,14 +1,20 @@
 import { createServer } from '@ainative/server-node';
 
 const server = createServer({
-  openai: {
-    apiKey: process.env.OPENAI_API_KEY || '',
-    model: 'gpt-4o',
-  },
-  defaultProvider: 'openai',
+  openai: process.env.OPENAI_API_KEY
+    ? {
+        apiKey: process.env.OPENAI_API_KEY,
+        model: 'gpt-4o',
+      }
+    : undefined,
+  defaultProvider: process.env.OPENAI_API_KEY ? 'openai' : undefined,
   port: 3001,
   cors: true,
   registerBuiltInTools: true,
+  fallbackResponse: (_action, params) => {
+    const message = params?.message || 'Hello from AINative';
+    return `Local demo response: ${message}`;
+  },
 });
 
 // Register custom tool

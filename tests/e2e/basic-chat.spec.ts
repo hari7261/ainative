@@ -30,7 +30,8 @@ test.describe('Basic Chat Example', () => {
     await page.waitForSelector('.ai-stream-message', { timeout: 5000 });
 
     const messages = page.locator('.ai-stream-message');
-    await expect(messages).toHaveCount(1);
+    await expect(messages).toHaveCount(2);
+    await expect(messages.nth(0)).toContainText('Hello, AI!');
   });
 
   test('should stream a response', async ({ page }) => {
