@@ -75,7 +75,7 @@ const config = {
 ### Manual Streaming
 
 ```typescript
-import { StreamingEngine, EventBus } from '@ainative/client';
+import { StreamingEngine, EventBus } from '@hari7261/ainative-client';
 
 const eventBus = new EventBus();
 const streaming = new StreamingEngine(eventBus);
@@ -100,7 +100,7 @@ await streaming.start({
 ### Node.js
 
 ```typescript
-import { StreamManager } from '@ainative/server-node';
+import { StreamManager } from '@hari7261/ainative-server-node';
 
 app.post('/ai/stream', async (req, res) => {
   const stream = new StreamManager(res);

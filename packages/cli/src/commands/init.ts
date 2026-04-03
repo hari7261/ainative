@@ -76,7 +76,7 @@ function createBasicStructure(projectPath: string, projectName: string) {
       'server:dev': 'tsx server.ts',
     },
     dependencies: {
-      '@ainative/client': '^0.1.0',
+      '@hari7261/ainative-client': '^0.1.0',
       react: '^18.2.0',
       'react-dom': '^18.2.0',
     },
@@ -85,7 +85,7 @@ function createBasicStructure(projectPath: string, projectName: string) {
       typescript: '^5.4.2',
       vite: '^5.1.4',
       tsx: '^4.7.1',
-      '@ainative/server-node': '^0.1.0',
+      '@hari7261/ainative-server-node': '^0.1.0',
     },
   };
 
@@ -122,7 +122,7 @@ export default defineConfig({
 
   const mainTsx = `import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { AIAppComponent, AIPane } from '@ainative/client';
+import { AIAppComponent, AIPane } from '@hari7261/ainative-client';
 
 function App() {
   const config = {
@@ -167,7 +167,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(<App />);
   fs.writeFileSync(path.join(projectPath, 'index.html'), indexHtml);
 
   // server.ts
-  const serverTs = `import { createServer } from '@ainative/server-node';
+  const serverTs = `import { createServer } from '@hari7261/ainative-server-node';
 
 const server = createServer({
   openai: {

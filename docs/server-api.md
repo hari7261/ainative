@@ -5,7 +5,7 @@
 ### Creating a Server
 
 ```typescript
-import { createServer } from '@ainative/server-node';
+import { createServer } from '@hari7261/ainative-server-node';
 
 const server = createServer({
   // Provider configuration

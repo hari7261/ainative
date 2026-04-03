@@ -10,7 +10,7 @@ AINative is built as a monorepo with multiple packages working together to provi
 ┌─────────────────────────────────────────────────┐
 │                   Browser                        │
 │  ┌──────────────────────────────────────────┐  │
-│  │         @ainative/client                  │  │
+│  │     @hari7261/ainative-client             │  │
 │  │  ┌────────────────────────────────────┐  │  │
 │  │  │  React Components                   │  │  │
 │  │  │  (AIApp, AIInput, AIStream)         │  │  │
@@ -28,8 +28,8 @@ AINative is built as a monorepo with multiple packages working together to provi
 ┌─────────────────────────────────────────────────┐
 │                   Server                         │
 │  ┌──────────────────────────────────────────┐  │
-│  │    @ainative/server-node OR              │  │
-│  │    @ainative/server-python               │  │
+│  │ @hari7261/ainative-server-node OR        │  │
+│  │    Python server adapter                 │  │
 │  │  ┌────────────────────────────────────┐  │  │
 │  │  │  API Endpoints                      │  │  │
 │  │  │  /ai/action, /ai/stream, /ai/tool   │  │  │

@@ -11,9 +11,9 @@ npm run build
 Then publish individual packages from their package directories:
 
 ```bash
-npm publish --workspace @ainative/client
-npm publish --workspace @ainative/server-node
-npm publish --workspace @ainative/cli
+npm publish --workspace @hari7261/ainative-client
+npm publish --workspace @hari7261/ainative-server-node
+npm publish --workspace @hari7261/ainative-cli
 ```
 
 ## Python package

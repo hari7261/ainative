@@ -56,7 +56,7 @@ const weatherTool = {
 ### Node.js Server
 
 ```typescript
-import { createServer } from '@ainative/server-node';
+import { createServer } from '@hari7261/ainative-server-node';
 
 const server = createServer(config);
 
@@ -294,7 +294,7 @@ const rateLimiter = new Map();
 ## Testing Tools
 
 ```typescript
-import { ToolRegistry } from '@ainative/server-node';
+import { ToolRegistry } from '@hari7261/ainative-server-node';
 import { test } from 'vitest';
 
 test('weather tool works', async () => {

@@ -9,7 +9,7 @@
 ## Install CLI
 
 ```bash
-npm install -g @ainative/cli
+npm install -g @hari7261/ainative-cli
 ```
 
 ## Create New Project
@@ -59,13 +59,13 @@ If you prefer to set up manually:
 ### Client
 
 ```bash
-npm install @ainative/client react react-dom
+npm install @hari7261/ainative-client react react-dom
 ```
 
 ### Node Server
 
 ```bash
-npm install @ainative/server-node express cors
+npm install @hari7261/ainative-server-node express cors
 ```
 
 ### Python Server

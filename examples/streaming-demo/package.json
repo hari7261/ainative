@@ -10,8 +10,8 @@
     "server": "tsx src/server.ts"
   },
   "dependencies": {
-    "@ainative/client": "workspace:*",
-    "@ainative/server-node": "workspace:*",
+    "@hari7261/ainative-client": "workspace:*",
+    "@hari7261/ainative-server-node": "workspace:*",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },

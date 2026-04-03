@@ -1,5 +1,5 @@
 {
-  "name": "@ainative/server-node",
+  "name": "@hari7261/ainative-server-node",
   "version": "0.1.0",
   "description": "AINative Node.js server adapter",
   "type": "module",

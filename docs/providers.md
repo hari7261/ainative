@@ -15,7 +15,7 @@ AINative currently ships adapters for these Node server providers:
 ## Example configuration
 
 ```ts
-import { createServer } from '@ainative/server-node';
+import { createServer } from '@hari7261/ainative-server-node';
 
 const server = createServer({
   openai: {

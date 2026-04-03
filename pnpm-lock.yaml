@@ -47,10 +47,10 @@ importers:
 
   examples/basic-chat:
     dependencies:
-      '@ainative/client':
+      '@hari7261/ainative-client':
         specifier: workspace:*
         version: link:../../packages/client
-      '@ainative/server-node':
+      '@hari7261/ainative-server-node':
         specifier: workspace:*
         version: link:../../packages/server-node
       react:
@@ -75,10 +75,10 @@ importers:
 
   examples/streaming-demo:
     dependencies:
-      '@ainative/client':
+      '@hari7261/ainative-client':
         specifier: workspace:*
         version: link:../../packages/client
-      '@ainative/server-node':
+      '@hari7261/ainative-server-node':
         specifier: workspace:*
         version: link:../../packages/server-node
       react:
@@ -128,6 +128,9 @@ importers:
       tsup:
         specifier: ^8.0.2
         version: 8.5.1(tsx@4.21.0)(typescript@5.9.3)
+      vitest:
+        specifier: ^1.4.0
+        version: 1.6.1(@types/node@20.19.39)
 
   packages/client:
     dependencies:

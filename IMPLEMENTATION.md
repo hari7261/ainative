@@ -24,7 +24,7 @@ ainative/
 
 ## Core Features Implemented
 
-### 1. Client Runtime (@ainative/client)
+### 1. Client Runtime (@hari7261/ainative-client)
 
 **Complete TypeScript Implementation:**
 
@@ -49,7 +49,7 @@ ainative/
 - ✅ File upload with drag-and-drop
 - ✅ Base64 encoding utilities
 
-### 2. Node.js Server (@ainative/server-node)
+### 2. Node.js Server (@hari7261/ainative-server-node)
 
 **Express-Based Server:**
 
@@ -73,7 +73,7 @@ ainative/
 - ✅ CORS support
 - ✅ Error normalization
 
-### 3. Python Server (@ainative/server-python)
+### 3. Python Server (ainative-server)
 
 **FastAPI Implementation:**
 
@@ -83,7 +83,7 @@ ainative/
 - ✅ Pydantic models for validation
 - ✅ SSE streaming support
 
-### 4. CLI Tool (@ainative/cli)
+### 4. CLI Tool (@hari7261/ainative-cli)
 
 **Commands:**
 

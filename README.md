@@ -76,6 +76,12 @@ The CLI currently supports:
 - `ainative doctor`
 - `ainative add-provider`
 
+Install the CLI after publish:
+
+```bash
+npm install -g @hari7261/ainative-cli
+```
+
 Smoke check:
 
 ```bash

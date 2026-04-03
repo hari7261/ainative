@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { AIAppComponent, AIPane } from '@ainative/client';
+import { AIAppComponent, AIPane } from '@hari7261/ainative-client';
 import './style.css';
 
 function App() {

@@ -28,5 +28,5 @@ AINative runtime coordinates state, events, rendering, and streaming for AI-driv
 ## Local validation
 
 ```bash
-npm test --workspace @ainative/client
+npm test --workspace @hari7261/ainative-client
 ```

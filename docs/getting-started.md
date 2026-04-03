@@ -20,7 +20,7 @@ AINative is a React-compatible, AI-native frontend framework where LLMs control 
 ### Installation
 
 ```bash
-npm install -g @ainative/cli
+npm install -g @hari7261/ainative-cli
 ```
 
 ### Create a New Project
@@ -54,7 +54,7 @@ Visit `http://localhost:5173` to see your app!
 ## Basic Example
 
 ```tsx
-import { AIAppComponent, AIPane } from '@ainative/client';
+import { AIAppComponent, AIPane } from '@hari7261/ainative-client';
 
 function App() {
   const config = {
