@@ -10,6 +10,7 @@
   "scripts": {
     "build": "tsup",
     "dev": "tsup --watch",
+    "test": "vitest run",
     "clean": "rimraf dist"
   },
   "dependencies": {
@@ -22,7 +23,8 @@
   "devDependencies": {
     "@types/fs-extra": "^11.0.4",
     "@types/prompts": "^2.4.9",
-    "tsup": "^8.0.2"
+    "tsup": "^8.0.2",
+    "vitest": "^1.4.0"
   },
   "keywords": ["ai", "llm", "cli"],
   "license": "MIT"

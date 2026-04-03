@@ -1,177 +1,84 @@
-# CLI Reference
+# CLI
+
+AINative ships a lightweight CLI in `packages/cli`.
 
 ## Commands
 
-### ainative init
+### `ainative init [name]`
 
-Initialize a new AINative project.
+Creates a starter project from the bundled template.
 
-```bash
-ainative init [name] [options]
-```
+Options:
 
-**Arguments:**
-- `name` - Project name (optional, will prompt if not provided)
+- `-t, --template <template>`: currently kept for compatibility, defaults to `basic`
 
-**Options:**
-- `-t, --template <template>` - Template to use (default: 'basic')
+### `ainative dev`
 
-**Examples:**
-```bash
-# Interactive mode
-ainative init
+Runs the current project's dev script.
 
-# With project name
-ainative init my-app
+Options:
 
-# With template
-ainative init my-app --template streaming
-```
+- `-p, --port <port>`: accepted by the command surface, though the current implementation delegates to the project script
 
-### ainative dev
+### `ainative build`
 
-Start the development server.
+Runs the current project's build script.
 
-```bash
-ainative dev [options]
-```
+Options:
 
-**Options:**
-- `-p, --port <port>` - Port number (default: 3000)
+- `-o, --output <dir>`: accepted by the command surface, though the current implementation delegates to the project script
 
-**Example:**
-```bash
-ainative dev --port 5173
-```
+### `ainative preview`
 
-### ainative build
+Runs the current project's preview script.
 
-Build the project for production.
+Options:
 
-```bash
-ainative build [options]
-```
+- `-p, --port <port>`: forwards `--port` to the preview command
 
-**Options:**
-- `-o, --output <dir>` - Output directory (default: 'dist')
+### `ainative doctor`
 
-**Example:**
-```bash
-ainative build --output build
-```
+Checks for:
 
-### ainative doctor
+- Node.js
+- npm
+- Git
 
-Check system dependencies and configuration.
+### `ainative add-provider <name>`
+
+Prints the environment variables needed for:
+
+- `openai`
+- `anthropic`
+- `ollama`
+
+## Local development
+
+Build the CLI:
 
 ```bash
-ainative doctor
+corepack pnpm --dir packages/cli run build
 ```
 
-Checks:
-- Node.js version
-- npm/pnpm version
-- Git installation
-- Environment variables
-- Package installations
-
-**Example output:**
-```
-🔍 AINative Doctor
-
-✓ Node.js v20.11.0
-✓ npm 10.2.4
-✓ Git 2.42.0
-
-All checks passed!
-```
-
-## Configuration
-
-### Project Structure
-
-After running `ainative init`, your project will have:
-
-```
-my-app/
-├── src/
-│   ├── main.tsx        # Client entry point
-│   └── server.ts       # Server entry point
-├── index.html          # HTML template
-├── package.json        # Dependencies
-├── tsconfig.json       # TypeScript config
-├── vite.config.ts      # Vite config
-└── .env.example        # Environment template
-```
-
-### Environment Variables
-
-Create a `.env` file:
+Run tests:
 
 ```bash
-# Required
-OPENAI_API_KEY=sk-...
-
-# Optional
-ANTHROPIC_API_KEY=sk-ant-...
-PORT=3001
-NODE_ENV=development
+corepack pnpm --dir packages/cli test
 ```
 
-## Templates
-
-### basic (default)
-
-Simple chat application with streaming.
-
-### streaming
-
-Advanced streaming demo with multiple providers.
-
-### multimodal
-
-Example with audio, image, and file support.
-
-## Global Installation
-
-Install globally for easy access:
+Smoke check the built binary:
 
 ```bash
-npm install -g @ainative/cli
+corepack pnpm --dir packages/cli exec node dist/index.js --help
 ```
 
-Or use with npx:
+## Template output
 
-```bash
-npx @ainative/cli init my-app
-```
+The bundled template includes:
 
-## Troubleshooting
-
-### Command not found
-
-If `ainative` command is not found after global install:
-
-```bash
-# Check global bin directory
-npm config get prefix
-
-# Add to PATH if needed
-export PATH="$PATH:$(npm config get prefix)/bin"
-```
-
-### Permission errors
-
-On Linux/Mac, you may need to use sudo:
-
-```bash
-sudo npm install -g @ainative/cli
-```
-
-Or configure npm to install globally without sudo:
-
-```bash
-mkdir ~/.npm-global
-npm config set prefix '~/.npm-global'
-export PATH=~/.npm-global/bin:$PATH
-```
+- `src/main.tsx`
+- `src/server.ts`
+- `index.html`
+- `vite.config.ts`
+- `tsconfig.json`
+- `package.json`
