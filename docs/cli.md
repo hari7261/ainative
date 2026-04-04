@@ -76,9 +76,23 @@ corepack pnpm --dir packages/cli exec node dist/index.js --help
 
 The bundled template includes:
 
-- `src/main.tsx`
-- `src/server.ts`
-- `index.html`
-- `vite.config.ts`
-- `tsconfig.json`
-- `package.json`
+- `src/main.tsx` - Main application component with AI workspace
+- `src/PromptInputBox.tsx` - Advanced prompt input component with multi-modal support
+- `src/server.ts` - AI server configuration
+- `src/style.css` - Modern, responsive styling
+- `index.html` - HTML entry point
+- `vite.config.ts` - Vite configuration
+- `tsconfig.json` - TypeScript configuration
+- `package.json` - Dependencies including Radix UI, Framer Motion, and Lucide icons
+
+### Template Features
+
+The default template includes:
+
+- **Multi-Modal Input**: Support for text, images (drag & drop, paste, upload)
+- **Voice Recording**: Click-to-record voice messages
+- **Smart Modes**: Toggle between Search, Think, and Canvas modes for specialized AI interactions
+- **Modern UI**: Built with Radix UI primitives and smooth Framer Motion animations
+- **Responsive Design**: Works seamlessly on desktop and mobile devices
+- **Tooltips**: Helpful tooltips on all interactive elements
+- **Image Preview**: Full-screen image viewer for uploaded files

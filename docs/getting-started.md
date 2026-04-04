@@ -54,9 +54,14 @@ Visit `http://localhost:5173` to see your app!
 ## Basic Example
 
 ```tsx
-import { AIAppComponent, AIPane } from '@hari7261/ainative-client';
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import { AIAppComponent } from '@hari7261/ainative-client';
+import { PromptInputBox } from './PromptInputBox';
 
 function App() {
+  const [input, setInput] = React.useState('');
+
   const config = {
     apiUrl: 'http://localhost:3001',
     streamMethod: 'SSE' as const,
@@ -65,16 +70,38 @@ function App() {
   return (
     <AIAppComponent config={config}>
       {(state, app) => (
-        <AIPane
-          state={state}
-          onSendMessage={(msg) => app.sendMessage(msg)}
-          title="My AI Assistant"
-        />
+        <div>
+          {/* Display messages */}
+          {state.messages.map((msg, idx) => (
+            <div key={idx}>
+              <strong>{msg.role}:</strong> {msg.content}
+            </div>
+          ))}
+
+          {/* Advanced prompt input with multi-modal support */}
+          <PromptInputBox
+            input={input}
+            setInput={setInput}
+            onSend={(message, files) => {
+              app.sendMessage(message, { stream: true });
+              setInput('');
+            }}
+            placeholder="Type your message..."
+            disabled={state.streaming}
+          />
+        </div>
       )}
     </AIAppComponent>
   );
 }
 ```
+
+The `ainative init` command creates a fully-featured template with:
+- Advanced prompt input box with image uploads
+- Voice recording capabilities
+- Search, Think, and Canvas modes
+- Drag & drop and paste support for images
+- Modern UI with Radix UI and Framer Motion
 
 ## Next Steps
 
