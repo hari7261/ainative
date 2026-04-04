@@ -1,7 +1,7 @@
 import React from "react";
 import * as TooltipPrimitive from "@radix-ui/react-tooltip";
 import * as DialogPrimitive from "@radix-ui/react-dialog";
-import { ArrowUp, Paperclip, Square, X, StopCircle, Mic, Globe, BrainCog, FolderCode } from "lucide-react";
+import { ArrowUp, Paperclip, X, StopCircle, Mic, Globe, BrainCog, FolderCode } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 // Utility function for className merging
@@ -64,7 +64,7 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
 }
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ className, variant = "default", size = "default", ...props }, ref) => {
+  ({ className, variant = "default", ...props }, ref) => {
     const variantClass = variant === "ghost" ? "ai-input-btn" : variant === "icon" ? "ai-input-btn" : "ai-input-submit";
     return (
       <button
@@ -98,7 +98,6 @@ TooltipContent.displayName = TooltipPrimitive.Content.displayName;
 
 // Dialog Component
 const Dialog = DialogPrimitive.Root;
-const DialogTrigger = DialogPrimitive.Trigger;
 const DialogPortal = DialogPrimitive.Portal;
 const DialogClose = DialogPrimitive.Close;
 
@@ -196,11 +195,11 @@ export const PromptInputBox = React.forwardRef<HTMLDivElement, PromptInputBoxPro
 
     const processFile = (file: File) => {
       if (!isImageFile(file)) {
-        console.log("Only image files are allowed");
+        // Only image files are allowed
         return;
       }
       if (file.size > 10 * 1024 * 1024) {
-        console.log("File too large (max 10MB)");
+        // File too large (max 10MB)
         return;
       }
       setFiles([file]);
@@ -270,12 +269,12 @@ export const PromptInputBox = React.forwardRef<HTMLDivElement, PromptInputBoxPro
     };
 
     const handleStartRecording = () => {
-      console.log("Started recording");
+      // Start recording voice message
       setIsRecording(true);
     };
 
     const handleStopRecording = (duration: number) => {
-      console.log(`Stopped recording after ${duration} seconds`);
+      // Stop recording voice message
       setIsRecording(false);
       onSend(`[Voice message - ${duration} seconds]`, []);
     };

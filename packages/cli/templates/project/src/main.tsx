@@ -119,7 +119,7 @@ function App() {
                 <PromptInputBox
                   input={input}
                   setInput={setInput}
-                  onSend={(message, files) => {
+                  onSend={(message) => {
                     app.sendMessage(message, { stream: true });
                     setInput('');
                   }}
