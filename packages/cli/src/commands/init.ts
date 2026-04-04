@@ -77,6 +77,10 @@ function createBasicStructure(projectPath: string, projectName: string) {
     },
     dependencies: {
       '@hari7261/ainative-client': '^0.1.1',
+      '@radix-ui/react-dialog': '^1.0.5',
+      '@radix-ui/react-tooltip': '^1.0.7',
+      'framer-motion': '^11.0.0',
+      'lucide-react': '^0.344.0',
       react: '^18.2.0',
       'react-dom': '^18.2.0',
     },
