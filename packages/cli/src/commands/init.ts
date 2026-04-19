@@ -7,7 +7,7 @@ import { fileURLToPath } from 'url';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
-export async function initCommand(name?: string, options?: any) {
+export async function initCommand(name?: string, _options?: any) {
   console.log(chalk.blue.bold('\n🤖 AINative Project Setup\n'));
 
   const projectName =

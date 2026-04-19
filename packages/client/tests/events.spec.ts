@@ -18,8 +18,8 @@ describe('EventBus', () => {
     eventBus.emit('action', { action: 'test', params: {} });
 
     expect(receivedEvent).not.toBeNull();
-    expect(receivedEvent?.type).toBe('action');
-    expect(receivedEvent?.payload.action).toBe('test');
+    expect((receivedEvent as AIEvent | null)?.type).toBe('action');
+    expect((receivedEvent as AIEvent | null)?.payload.action).toBe('test');
   });
 
   it('should support multiple listeners', () => {
@@ -47,7 +47,7 @@ describe('EventBus', () => {
   });
 
   it('should support global listeners', () => {
-    let receivedTypes: string[] = [];
+    const receivedTypes: string[] = [];
 
     eventBus.onAll((event) => {
       receivedTypes.push(event.type);

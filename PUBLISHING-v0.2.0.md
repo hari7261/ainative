@@ -178,8 +178,8 @@ npm install -g @hari7261/ainative-cli@next
 
 ## Notes
 
-- The client and server-node packages remain at v0.1.1 (no changes)
-- Only the CLI package needs to be published for this release
+- The CLI package is the primary template release for v0.2.0
+- The client and server-node packages can also be published at v0.2.0 for version alignment
 - The template files are bundled with the CLI package
 - Users will get the new template automatically when they run `ainative init`
 

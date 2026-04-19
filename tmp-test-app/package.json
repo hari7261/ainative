@@ -1,28 +1,26 @@
 {
-  "name": "ainative-app",
-  "version": "0.2.0",
-  "private": true,
+  "name": "tmp-test-app",
+  "version": "0.1.1",
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview",
-    "server": "tsx src/server.ts"
+    "server:dev": "tsx server.ts"
   },
   "dependencies": {
-    "@hari7261/ainative-client": "^0.2.0",
-    "@hari7261/ainative-server-node": "^0.2.0",
+    "@hari7261/ainative-client": "^0.1.1",
     "@radix-ui/react-dialog": "^1.0.5",
     "@radix-ui/react-tooltip": "^1.0.7",
     "framer-motion": "^11.0.0",
-    "lucide-react": "^0.453.0",
+    "lucide-react": "^0.344.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
   "devDependencies": {
     "@vitejs/plugin-react": "^4.2.1",
-    "tsx": "^4.7.1",
     "typescript": "^5.4.2",
-    "vite": "^5.1.4"
+    "vite": "^5.1.4",
+    "tsx": "^4.7.1",
+    "@hari7261/ainative-server-node": "^0.1.1"
   }
 }

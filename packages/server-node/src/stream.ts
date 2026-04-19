@@ -64,11 +64,7 @@ export class StreamManager {
 export async function* streamTokens(
   generator: AsyncGenerator<string, void, unknown>
 ): AsyncGenerator<string, void, unknown> {
-  try {
-    for await (const token of generator) {
-      yield token;
-    }
-  } catch (error) {
-    throw error;
+  for await (const token of generator) {
+    yield token;
   }
 }

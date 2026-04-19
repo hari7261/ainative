@@ -1,6 +1,18 @@
-# AINative
+# AINative: The AI-Driven Interface Framework
 
-AINative is a small monorepo for building AI-driven interfaces with a React client runtime, a Node server adapter, a Python server adapter, a CLI, and runnable examples.
+**AINative is a domain-specific micro-framework** (rather than just a traditional library) designed to standardize and simplify the process of building AI/LLM-driven full-stack applications.
+
+## What Is It?
+Instead of manually wiring together generic UI frameworks, backend routing, and complex text streaming protocols, AINative offers an end-to-end architecture (React on the frontend and an Express/FastAPI adapter on the backend) tailored specifically for LLM streaming, multimodal inputs, and prompt UI states.
+
+## Why Is It Helpful?
+Building an AI application typically involves repetitive tasks such as maintaining chat state histories perfectly in sync with the backend memory, parsing chunked data streams in React, updating loading states gracefully, handling errors natively mid-stream, and invoking system tools.
+AINative simplifies this by providing ready-made client-side runtimes, components, and server-side routes that natively understand AI interactions, freeing you to focus only on building your domain tools and prompts.
+
+## How Does It Work?
+AINative embraces "Inversion of Control". You inject the `<AIApp>` provider into your React application and set up an `AINativeServer` on your backend. When components trigger user prompts (eg: `<AIInput>`), the system takes over. The data is securely ferried backwards via the server adapter to the given AI model. The response payload is then streamed down to the `<AIStream>` components natively, parsing functions and text outputs synchronously into your view tree.
+
+---
 
 ## What is in this repo
 
