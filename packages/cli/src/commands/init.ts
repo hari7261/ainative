@@ -8,7 +8,17 @@ import { fileURLToPath } from 'url';
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 export async function initCommand(name?: string, _options?: any) {
-  console.log(chalk.blue.bold('\n🤖 AINative Project Setup\n'));
+  console.log(chalk.cyan.bold(`
+ █████╗ ██╗███╗   ██╗ █████╗ ████████╗██╗██╗   ██╗███████╗        ██████
+██╔══██╗██║████╗  ██║██╔══██╗╚══██╔══╝██║██║   ██║██╔════╝       ██ ◉◉ ██
+███████║██║██╔██╗ ██║███████║   ██║   ██║██║   ██║█████╗        ██████████
+██╔══██║██║██║╚██╗██║██╔══██║   ██║   ██║╚██╗ ██╔╝██╔══╝        ██ ██ ██
+██║  ██║██║██║ ╚████║██║  ██║   ██║   ██║ ╚████╔╝ ███████╗         ██  ██
+╚═╝  ╚═╝╚═╝╚═╝  ╚═══╝╚═╝  ╚═╝   ╚═╝   ╚═╝  ╚═══╝  ╚══════╝         ██  ██
+
+                         v0.2.2 • AI Native Runtime
+                  Build Intelligent Apps for Every Screen
+`));
 
   const projectName =
     name ||
@@ -33,7 +43,7 @@ export async function initCommand(name?: string, _options?: any) {
     process.exit(1);
   }
 
-  const spinner = ora('Creating project...').start();
+  const spinner1 = ora('⚡ Initializing project...').start();
 
   try {
     // Create project directory
@@ -48,17 +58,33 @@ export async function initCommand(name?: string, _options?: any) {
       // Create basic structure if template doesn't exist
       createBasicStructure(projectPath, projectName);
     }
+    spinner1.succeed('Scaffolding files');
 
-    spinner.succeed('Project created successfully!');
+    const spinner2 = ora('Installing dependencies').start();
+    // Simulate install for the visual
+    await new Promise(resolve => setTimeout(resolve, 800));
+    spinner2.succeed('Installing dependencies');
+
+    const spinner3 = ora('Configuring native runtime').start();
+    await new Promise(resolve => setTimeout(resolve, 400));
+    spinner3.succeed('Configuring native runtime');
+
+    const spinner4 = ora('Enabling AI engine').start();
+    await new Promise(resolve => setTimeout(resolve, 500));
+    spinner4.succeed('Enabling AI engine');
 
     console.log(chalk.green(`\n✨ Success! Created ${projectName}\n`));
+    
+    console.log(chalk.yellow(`🎉 ✦ 🎊 ✨ 🎉   Ready to Build   🎉 ✦ 🎊 ✨ 🎉\n`));
+    console.log(chalk.gray(`"Code less. Ship smarter."\n`));
+
     console.log('Next steps:');
     console.log(chalk.cyan(`  cd ${projectName}`));
     console.log(chalk.cyan('  npm install'));
     console.log(chalk.cyan('  npm run dev'));
     console.log();
   } catch (error) {
-    spinner.fail('Failed to create project');
+    spinner1.fail('Failed to create project');
     console.error(error);
     process.exit(1);
   }
@@ -68,7 +94,7 @@ function createBasicStructure(projectPath: string, projectName: string) {
   // package.json
   const packageJson = {
     name: projectName,
-    version: '0.1.1',
+    version: '0.2.2',
     type: 'module',
     scripts: {
       dev: 'vite',
@@ -76,11 +102,11 @@ function createBasicStructure(projectPath: string, projectName: string) {
       'server:dev': 'tsx server.ts',
     },
     dependencies: {
-      '@hari7261/ainative-client': '^0.1.1',
+      '@hari7261/ainative-client': '^0.2.2',
       '@radix-ui/react-dialog': '^1.0.5',
       '@radix-ui/react-tooltip': '^1.0.7',
       'framer-motion': '^11.0.0',
-      'lucide-react': '^0.344.0',
+      'lucide-react': '^0.453.0',
       react: '^18.2.0',
       'react-dom': '^18.2.0',
     },
@@ -89,7 +115,7 @@ function createBasicStructure(projectPath: string, projectName: string) {
       typescript: '^5.4.2',
       vite: '^5.1.4',
       tsx: '^4.7.1',
-      '@hari7261/ainative-server-node': '^0.1.1',
+      '@hari7261/ainative-server-node': '^0.2.2',
     },
   };
 
