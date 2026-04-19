@@ -40,5 +40,8 @@
     "express"
   ],
   "author": "AINative Contributors",
-  "license": "MIT"
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  }
 }

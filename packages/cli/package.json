@@ -27,5 +27,8 @@
     "vitest": "^1.4.0"
   },
   "keywords": ["ai", "llm", "cli"],
-  "license": "MIT"
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  }
 }
