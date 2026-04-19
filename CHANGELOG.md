@@ -7,18 +7,42 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+No unreleased changes documented yet.
+
+## [0.2.4] - 2026-04-19
+
+### Fixed
+- Updated the CLI init banner to display `v0.2.4` consistently
+- Aligned generated project dependency versions and package manifests with the `0.2.4` release
+
+## [0.2.3] - 2026-04-19
+
+### Fixed
+- Compiled the refreshed CLI banner into the distributed init command so new installs show the latest branding
+- Aligned workspace and starter template package versions for the `0.2.3` release
+
+## [0.2.2] - 2026-04-19
+
+### Changed
+- Refreshed the CLI init banner and startup presentation
+- Completed the version bump across the workspace and starter template for `v0.2.2`
+
+## [0.2.1] - 2026-04-19
+
+### Fixed
+- Resolved CLI template issues, missing package READMEs, and streaming TypeScript typing problems
+- Added `publishConfig` to scoped packages to support public npm publishing
+- Cleaned temporary release artifacts before publishing
+
+## [0.2.0] - 2026-04-04
+
 ### Added
-- Initial release of AINative framework
-- Client runtime with React-compatible component system
-- AI-driven state reconciliation
-- Native token streaming support (SSE + WebSocket)
-- Multimodal input handling (text, audio, image, file)
-- Server adapters for Node.js and Python
-- LLM provider integrations (OpenAI, Anthropic, Ollama, Google Gemini)
-- Tool/Action execution protocol
-- CLI for project scaffolding and development
-- Comprehensive documentation
-- Example applications
+- Advanced AI prompt box template with multimodal text, image, and voice input
+- Search, Think, and Canvas interaction modes in the starter experience
+- Radix UI and Framer Motion powered template polish plus improved template documentation
+
+### Fixed
+- Resolved template linting issues before npm release
 
 ## [0.1.1] - 2026-04-04
 
