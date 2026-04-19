@@ -1,6 +1,6 @@
 {
   "name": "ainative-app",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "private": true,
   "type": "module",
   "scripts": {
@@ -10,8 +10,8 @@
     "server": "tsx src/server.ts"
   },
   "dependencies": {
-    "@hari7261/ainative-client": "^0.2.3",
-    "@hari7261/ainative-server-node": "^0.2.3",
+    "@hari7261/ainative-client": "^0.2.4",
+    "@hari7261/ainative-server-node": "^0.2.4",
     "@radix-ui/react-dialog": "^1.0.5",
     "@radix-ui/react-tooltip": "^1.0.7",
     "framer-motion": "^11.0.0",
