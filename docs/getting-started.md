@@ -56,12 +56,9 @@ Visit `http://localhost:5173` to see your app!
 ```tsx
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { AIAppComponent } from '@hari7261/ainative-client';
-import { PromptInputBox } from './PromptInputBox';
+import { AIAppComponent, AIPane } from '@hari7261/ainative-client';
 
 function App() {
-  const [input, setInput] = React.useState('');
-
   const config = {
     apiUrl: 'http://localhost:3001',
     streamMethod: 'SSE' as const,
@@ -70,26 +67,16 @@ function App() {
   return (
     <AIAppComponent config={config}>
       {(state, app) => (
-        <div>
-          {/* Display messages */}
-          {state.messages.map((msg, idx) => (
-            <div key={idx}>
-              <strong>{msg.role}:</strong> {msg.content}
-            </div>
-          ))}
-
-          {/* Advanced prompt input with multi-modal support */}
-          <PromptInputBox
-            input={input}
-            setInput={setInput}
-            onSend={(message, files) => {
-              app.sendMessage(message, { stream: true });
-              setInput('');
-            }}
-            placeholder="Type your message..."
-            disabled={state.streaming}
-          />
-        </div>
+        <AIPane
+          state={state}
+          onSendMessage={(message, attachments, meta) =>
+            app.sendMessage(message, {
+              stream: true,
+              context: { mode: meta?.mode ?? 'default', attachments: attachments?.length ?? 0 },
+            })
+          }
+          title="AINative Workspace"
+        />
       )}
     </AIAppComponent>
   );
@@ -97,11 +84,11 @@ function App() {
 ```
 
 The `ainative init` command creates a fully-featured template with:
-- Advanced prompt input box with image uploads
-- Voice recording capabilities
+- Built-in Studio-style chat workspace
+- Voice recording and file attachment capabilities
 - Search, Think, and Canvas modes
-- Drag & drop and paste support for images
-- Modern UI with Radix UI and Framer Motion
+- Runtime event and request visibility in the UI
+- Clean professional light theme
 
 ## Next Steps
 
