@@ -14,6 +14,16 @@ AINative embraces "Inversion of Control". You inject the `<AIApp>` provider into
 
 ---
 
+## What's new in v0.3.0
+
+- Built-in Studio-style chat workspace with a clean light UI
+- Search, Think, and Canvas prompt modes in the shipped client surface
+- File attachments and voice-note capture in the default input flow
+- Runtime event tracking, request counts, and streamed-token visibility in the chat workspace
+- Refreshed `basic-chat` example and CLI starter template aligned to the same first-party UI
+
+---
+
 ## What is in this repo
 
 - `packages/client`: runtime, components, multimodal helpers, and client-side tests
@@ -107,7 +117,7 @@ The repo has been validated locally with:
 - monorepo build
 - client unit tests
 - Node server tests
-- Python server smoke test
+- example production build for `basic-chat`
 - Playwright end-to-end tests for `basic-chat`
 - CLI help and doctor smoke checks
 

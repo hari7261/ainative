@@ -62,6 +62,6 @@ export { AIStream, AIStreamList } from './components/AIStream';
 export { AIPane } from './components/AIPane';
 
 export type { AIAppProps } from './components/AIApp';
-export type { AIInputProps } from './components/AIInput';
+export type { AIInputProps, AIInputAttachment, AIInputSubmitMeta } from './components/AIInput';
 export type { AIStreamProps, AIStreamListProps } from './components/AIStream';
 export type { AIPaneProps } from './components/AIPane';

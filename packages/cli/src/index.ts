@@ -13,7 +13,7 @@ const program = new Command();
 program
   .name('ainative')
   .description('AINative CLI - Build AI-native applications')
-  .version('0.1.1');
+  .version('0.3.0');
 
 program
   .command('init')

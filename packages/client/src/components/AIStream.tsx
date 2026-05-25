@@ -1,10 +1,6 @@
-/**
- * AIStream Component
- * Displays streaming AI responses with token-by-token rendering
- */
-
 import React, { useEffect, useState, useRef } from 'react';
 import { Message } from '../runtime/state';
+import { ensureAINativeComponentStyles } from './styles';
 
 export interface AIStreamProps {
   message: Message;
@@ -19,6 +15,7 @@ export const AIStream: React.FC<AIStreamProps> = ({
   className = '',
   renderContent,
 }) => {
+  ensureAINativeComponentStyles();
   const [displayedContent, setDisplayedContent] = useState('');
   const contentRef = useRef<HTMLDivElement>(null);
 
@@ -52,7 +49,7 @@ export const AIStream: React.FC<AIStreamProps> = ({
   };
 
   return (
-    <div className={`ai-stream-message ${getRoleColor(message.role)} ${className}`} ref={contentRef}>
+    <div className={`ain-shell ai-stream-message ${getRoleColor(message.role)} ${className}`} ref={contentRef}>
       <div className="ai-stream-header">
         <span className="ai-stream-role">{message.role}</span>
         <span className="ai-stream-time">{formatTimestamp(message.timestamp)}</span>
@@ -87,6 +84,7 @@ export const AIStreamList: React.FC<AIStreamListProps> = ({
   className = '',
   renderContent,
 }) => {
+  ensureAINativeComponentStyles();
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -97,7 +95,7 @@ export const AIStreamList: React.FC<AIStreamListProps> = ({
   }, [messages]);
 
   return (
-    <div className={`ai-stream-list ${className}`} ref={containerRef}>
+    <div className={`ain-shell ai-stream-list ${className}`} ref={containerRef}>
       {messages.map((message) => (
         <AIStream
           key={message.id}

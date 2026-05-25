@@ -6,7 +6,7 @@ test.describe('Basic Chat Example', () => {
   });
 
   test('should load the application', async ({ page }) => {
-    await expect(page.locator('h2')).toContainText('Basic Chat Example');
+    await expect(page.locator('h2')).toContainText('AINative Studio Chat');
   });
 
   test('should have an input field', async ({ page }) => {

@@ -4,7 +4,7 @@
  */
 
 import { AIStateManager, AIState } from './state';
-import { EventBus, ActionEvent } from './events';
+import { EventBus, ActionEvent, AIEvent } from './events';
 import { StreamingEngine, StreamConfig } from './streaming';
 import { AIReconciler } from './reconciler';
 import { AIRenderer, RenderOptions } from './renderer';
@@ -197,6 +197,10 @@ export class AIApp {
     this.eventBus.on('error', ({ payload }) => {
       console.error('AINative Error:', payload.error);
     });
+
+    this.eventBus.onAll((event) => {
+      this.recordEventMetadata(event);
+    });
   }
 
   private enableDebugMode(): void {
@@ -207,6 +211,70 @@ export class AIApp {
     this.stateManager.subscribe((state) => {
       console.log('[AINative State]', state);
     });
+  }
+
+  private recordEventMetadata(event: AIEvent): void {
+    const state = this.stateManager.getState();
+    const metadata = { ...state.metadata };
+    const recentEvents = Array.isArray(metadata.recentEvents)
+      ? [...metadata.recentEvents]
+      : [];
+    const summary = this.describeEvent(event);
+
+    if (event.type !== 'stream-data' || summary) {
+      recentEvents.push({
+        id: event.id,
+        type: event.type,
+        timestamp: event.timestamp,
+        summary,
+      });
+    }
+
+    metadata.recentEvents = recentEvents.slice(-25);
+    metadata.lastEvent = event.type;
+
+    if (event.type === 'action') {
+      metadata.requestCount = typeof metadata.requestCount === 'number' ? metadata.requestCount + 1 : 1;
+      const actionPayload = event.payload as ActionEvent;
+      metadata.lastMode = actionPayload.context?.mode || 'default';
+    }
+
+    if (event.type === 'stream-start') {
+      metadata.streamTokenCount = 0;
+    }
+
+    if (event.type === 'stream-data') {
+      metadata.streamTokenCount =
+        typeof metadata.streamTokenCount === 'number' ? metadata.streamTokenCount + 1 : 1;
+    }
+
+    this.stateManager.setState({ metadata });
+  }
+
+  private describeEvent(event: AIEvent): string {
+    if (event.type === 'action') {
+      const payload = event.payload as ActionEvent;
+      const mode = payload.context?.mode ? ` (${payload.context.mode})` : '';
+      return `Action ${payload.action}${mode}`;
+    }
+
+    if (event.type === 'stream-start') {
+      return 'Streaming started';
+    }
+
+    if (event.type === 'stream-end') {
+      return 'Streaming finished';
+    }
+
+    if (event.type === 'stream-error') {
+      return 'Streaming error';
+    }
+
+    if (event.type === 'error') {
+      return 'Runtime error';
+    }
+
+    return event.type;
   }
 }
 

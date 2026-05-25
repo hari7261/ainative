@@ -9,6 +9,23 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 No unreleased changes documented yet.
 
+## [0.3.0] - 2026-05-25
+
+### Added
+- Introduced a built-in Studio-style chat workspace in the client package with a clean professional light theme
+- Added mode-aware prompt controls for `Search`, `Think`, and `Canvas`
+- Added built-in file attachments and voice-note capture to the default prompt flow
+- Added runtime event, request-count, and streamed-token metadata for richer in-app diagnostics
+
+### Changed
+- Unified the shipped client components, the `basic-chat` example, and the CLI starter template around the same first-party chat surface
+- Refreshed the starter and example UI to remove the older dark animated treatment in favor of a deployment-ready workspace
+- Simplified the generated starter template dependency set so it relies on AINative's built-in components directly
+
+### Fixed
+- Corrected stale CLI version reporting and aligned generated package versions for the `0.3.0` release
+- Normalized package version metadata across the repo, including the Python adapter package
+
 ## [0.2.4] - 2026-04-19
 
 ### Fixed

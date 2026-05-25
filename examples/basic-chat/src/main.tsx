@@ -12,42 +12,41 @@ function App() {
 
   return (
     <div className="starter-app-shell">
-      <div className="starter-glow starter-glow-one" />
-      <div className="starter-glow starter-glow-two" />
       <AIAppComponent config={config}>
         {(state, app) => (
           <main className="starter-layout">
             <section className="starter-sidebar">
               <div className="starter-brand">
-                <span className="starter-badge">Example App</span>
-                <h1>Responsive AI chat with streaming built in.</h1>
+                <span className="starter-badge">AINative Example</span>
+                <h1>Professional AI chat, packaged like a real framework.</h1>
                 <p>
-                  This example shows the published AINative packages in a polished interface with
-                  a local fallback server and modern responsive styling.
+                  This example is the reference workspace for the new AINative chat surface. It
+                  shows streaming, mode-aware prompts, file attachments, and request diagnostics in
+                  one clean deployable layout.
                 </p>
               </div>
 
               <div className="starter-feature-grid">
                 <article>
-                  <span>Responsive</span>
-                  <strong>Comfortable desktop layout and clean mobile chat flow</strong>
+                  <span>Studio flow</span>
+                  <strong>One place to test prompts, states, and runtime behavior</strong>
                 </article>
                 <article>
-                  <span>Streaming</span>
-                  <strong>Assistant responses update token by token</strong>
+                  <span>Light UI</span>
+                  <strong>Clean professional styling with no gradients or decorative motion</strong>
                 </article>
                 <article>
-                  <span>Multimodal</span>
-                  <strong>Audio, image, and file affordances are already wired in</strong>
+                  <span>Package-ready</span>
+                  <strong>Matches the components shipped by the client package and CLI starter</strong>
                 </article>
               </div>
 
               <div className="starter-tips">
                 <p>Prompt ideas</p>
                 <ul>
-                  <li>Draft a product launch plan for a solo founder.</li>
-                  <li>Summarize a meeting into crisp action items.</li>
-                  <li>Design a feature list for an AI note-taking app.</li>
+                  <li>Use Search mode to compare two AI app ideas.</li>
+                  <li>Use Think mode to break down a launch roadmap.</li>
+                  <li>Attach a screenshot or PDF and ask for feedback.</li>
                 </ul>
               </div>
             </section>
@@ -56,33 +55,48 @@ function App() {
               <AIPane
                 state={state}
                 className="starter-pane"
-                onSendMessage={(msg) => {
-                  app.sendMessage(msg, { stream: true });
+                onSendMessage={(message, attachments, meta) => {
+                  const attachmentCount = attachments?.length ?? 0;
+                  const suffix =
+                    attachmentCount > 0
+                      ? `\n\nAttachments: ${attachmentCount} item${attachmentCount === 1 ? '' : 's'}`
+                      : '';
+                  app.sendMessage(`${message}${suffix}`, {
+                    stream: true,
+                    context: {
+                      mode: meta?.mode ?? 'default',
+                    },
+                  });
                 }}
-                title="Basic Chat Example"
-                subtitle="Powered by AINative"
+                title="AINative Studio Chat"
+                subtitle="Streaming, attachments, and event visibility in one light-weight framework surface."
                 enableAudio={true}
-                enableImage={true}
                 enableFile={true}
                 renderHeader={() => (
-                  <div className="starter-pane-header">
+                  <div className="ain-header ai-pane-header">
                     <div>
-                      <span className="starter-pane-kicker">DEMO MODE</span>
-                      <h2 className="starter-pane-title">Basic Chat Example</h2>
-                      <p className="starter-pane-subtitle">
-                        A modern responsive chat workspace powered by the AINative runtime.
+                      <span className="ain-kicker">Demo workspace</span>
+                      <h2 className="ain-title starter-pane-title">AINative Studio Chat</h2>
+                      <p className="ain-subtitle starter-pane-subtitle">
+                        Validate the new framework UI, then publish the same experience through the
+                        client package and generated starter app.
                       </p>
                     </div>
-                    <div className="starter-pane-pills">
-                      <span>{state.messages.length} messages</span>
-                      <span>{state.streaming ? 'Streaming' : 'Ready'}</span>
+                    <div className="ain-status-row starter-pane-pills">
+                      <span className="ain-status-pill" data-state={state.streaming ? 'active' : 'idle'}>
+                        {state.streaming ? 'Streaming' : 'Ready'}
+                      </span>
+                      <span className="ain-metric">{state.messages.length} messages</span>
+                      <span className="ain-metric">
+                        {typeof state.metadata?.requestCount === 'number' ? state.metadata.requestCount : 0} requests
+                      </span>
                     </div>
                   </div>
                 )}
                 renderFooter={() => (
-                  <div className="starter-pane-footer">
+                  <div className="ain-footer starter-pane-footer">
                     <span>Local fallback works without API keys.</span>
-                    <span>Add `OPENAI_API_KEY` for real model responses.</span>
+                    <span>Add `OPENAI_API_KEY` for production model responses.</span>
                   </div>
                 )}
               />

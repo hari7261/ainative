@@ -104,4 +104,24 @@ describe('AIStateManager', () => {
     const stateAfterUndo = stateManager.getState();
     expect(stateAfterUndo.messages).toHaveLength(stateAfterFirst.messages.length);
   });
+
+  it('should merge metadata updates', () => {
+    stateManager.setState({
+      metadata: {
+        requestCount: 1,
+      },
+    });
+
+    stateManager.setState({
+      metadata: {
+        ...stateManager.getState().metadata,
+        lastMode: 'search',
+      },
+    });
+
+    expect(stateManager.getState().metadata).toEqual({
+      requestCount: 1,
+      lastMode: 'search',
+    });
+  });
 });

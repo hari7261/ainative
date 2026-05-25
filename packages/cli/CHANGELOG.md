@@ -1,5 +1,13 @@
 # @hari7261/ainative-cli
 
+## 0.3.0
+
+### Minor Changes
+
+- Refresh the generated starter around AINative's built-in Studio-style chat workspace
+- Remove the older custom prompt-box dependency stack from the default template
+- Align CLI version output, init banner text, and generated package versions for the `0.3.0` release
+
 ## 0.2.0
 
 ### Minor Changes
