@@ -16,7 +16,7 @@ export async function initCommand(name?: string, _options?: any) {
 ██║  ██║██║██║ ╚████║██║  ██║   ██║   ██║ ╚████╔╝ ███████╗         ██  ██
 ╚═╝  ╚═╝╚═╝╚═╝  ╚═══╝╚═╝  ╚═╝   ╚═╝   ╚═╝  ╚═══╝  ╚══════╝         ██  ██
 
-                         v0.3.0 • AI Native Runtime
+                         v0.3.1 • AI Native Runtime
                   Build Intelligent Apps for Every Screen
 `));
 
@@ -94,7 +94,7 @@ function createBasicStructure(projectPath: string, projectName: string) {
   // package.json
   const packageJson = {
     name: projectName,
-    version: '0.3.0',
+    version: '0.3.1',
     type: 'module',
     scripts: {
       dev: 'vite',
@@ -102,7 +102,7 @@ function createBasicStructure(projectPath: string, projectName: string) {
       'server:dev': 'tsx server.ts',
     },
     dependencies: {
-      '@hari7261/ainative-client': '^0.3.0',
+      '@hari7261/ainative-client': '^0.3.1',
       react: '^18.2.0',
       'react-dom': '^18.2.0',
     },
@@ -111,7 +111,7 @@ function createBasicStructure(projectPath: string, projectName: string) {
       typescript: '^5.4.2',
       vite: '^5.1.4',
       tsx: '^4.7.1',
-      '@hari7261/ainative-server-node': '^0.3.0',
+      '@hari7261/ainative-server-node': '^0.3.1',
     },
   };
 

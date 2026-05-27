@@ -14,6 +14,13 @@ AINative embraces "Inversion of Control". You inject the `<AIApp>` provider into
 
 ---
 
+## What's new in v0.3.1
+
+- The generated starter from `npx @hari7261/ainative-cli init my-app` now opens with a centered prompt-first surface instead of the older split workspace layout
+- The starter header now keeps the AINative product name centered at the top
+- The starter composer uses compact icon controls for file attach, Search / Think / Canvas modes, voice recording, and send behavior
+- Windows install guidance now recommends `npx` first and explains how to fix `EPERM` errors from global npm installs
+
 ## What's new in v0.3.0
 
 - Built-in Studio-style chat workspace with a clean light UI

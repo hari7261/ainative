@@ -1,5 +1,13 @@
 # @hari7261/ainative-cli
 
+## 0.3.1
+
+### Patch Changes
+
+- Refresh the generated starter around a centered prompt-first UI with a minimal header and focused composer
+- Update the built-in input controls to use compact icon actions for file attach, modes, recording, and send behavior
+- Document Windows `EPERM` global install failures and recommend the `npx` flow first
+
 ## 0.3.0
 
 ### Minor Changes

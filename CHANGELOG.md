@@ -9,6 +9,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 No unreleased changes documented yet.
 
+## [0.3.1] - 2026-05-27
+
+### Added
+- Added explicit Windows CLI install guidance with `npx`-first recommendations and `EPERM` troubleshooting for global npm installs
+
+### Changed
+- Rebuilt the generated starter app around a centered, prompt-first surface instead of the older split workspace layout
+- Centered the product name in the starter header and aligned the generated app more closely with the intended prompt-box reference UI
+- Updated the built-in client input controls to use compact icon actions for attachments, modes, recording, and send behavior
+
+### Fixed
+- Kept the generated starter template, CLI scaffolding fallback, and package version references aligned for the `0.3.1` release
+- Improved the starter install story on Windows so `npx @hari7261/ainative-cli init my-app` is the clearly documented fast path
+
 ## [0.3.0] - 2026-05-25
 
 ### Added
