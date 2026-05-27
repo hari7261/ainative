@@ -101,6 +101,19 @@ The CLI currently supports:
 Install the CLI after publish:
 
 ```bash
+npx @hari7261/ainative-cli init my-app
+```
+
+If you want a global install instead:
+
+```bash
+npm install -g @hari7261/ainative-cli
+```
+
+Windows note: if `npm install -g` fails with `EPERM` under `C:\Program Files\nodejs\node_modules`, use `npx` instead, run PowerShell as Administrator, or configure npm to use a user-level global directory.
+
+```bash
+npm config set prefix "$env:APPDATA\\npm"
 npm install -g @hari7261/ainative-cli
 ```
 

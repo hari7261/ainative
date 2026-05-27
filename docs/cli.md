@@ -2,6 +2,22 @@
 
 AINative ships a lightweight CLI in `packages/cli`.
 
+## Install and run
+
+Recommended:
+
+```bash
+npx @hari7261/ainative-cli init my-app
+```
+
+Optional global install:
+
+```bash
+npm install -g @hari7261/ainative-cli
+```
+
+Windows note: if global install fails with `EPERM` in `C:\Program Files\nodejs\node_modules`, use `npx`, run your shell as Administrator, or set npm's global prefix to a user-writable location such as `%APPDATA%\\npm`.
+
 ## Commands
 
 ### `ainative init [name]`

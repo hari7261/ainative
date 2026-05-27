@@ -1,6 +1,6 @@
 # AINative Starter Template
 
-Welcome to your new AINative project. This starter ships with the framework's built-in Studio-style chat workspace and a clean, production-friendly default UI.
+Welcome to your new AINative project. This starter ships with a minimal prompt-first interface: centered product header, focused composer, and streaming replies that stay out of the way until you need them.
 
 ## Quick Start
 
@@ -38,11 +38,11 @@ Then open `http://localhost:5173`.
 
 ## What you get
 
-- Built-in `AIPane` workspace from `@hari7261/ainative-client`
-- Search, Think, and Canvas prompt modes
+- Prompt-first starter surface with the product name centered at the top
+- Search, Think, and Canvas controls in the composer
 - File attachments and voice-note capture
-- Request counts, recent events, and streaming status in the UI
-- Clean responsive light theme ready for product work
+- Streaming replies that appear above the composer after the first request
+- Minimal responsive layout designed to feel polished from the first run
 
 ## Project structure
 
@@ -74,14 +74,14 @@ Edit `src/server.ts` to configure your preferred provider.
 
 Edit `src/main.tsx` to customize:
 
-- header and footer copy
+- header text
 - prompt behavior and modes
 - provider context passed to the runtime
-- layout around the built-in chat workspace
+- layout around the built-in message stream and composer
 
 ### Styling
 
-Edit `src/style.css` to adapt spacing, typography, and page framing around the built-in AINative components.
+Edit `src/style.css` to adapt the page framing, gradient backdrop, spacing, and responsive behavior around the built-in AINative components.
 
 ## Learn more
 

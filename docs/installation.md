@@ -8,6 +8,14 @@
 
 ## Install CLI
 
+Recommended:
+
+```bash
+npx @hari7261/ainative-cli init my-app
+```
+
+Optional global install:
+
 ```bash
 npm install -g @hari7261/ainative-cli
 ```
@@ -16,6 +24,13 @@ npm install -g @hari7261/ainative-cli
 
 ```bash
 ainative init my-app
+cd my-app
+```
+
+If you used `npx`, the full command is:
+
+```bash
+npx @hari7261/ainative-cli init my-app
 cd my-app
 ```
 
@@ -81,6 +96,49 @@ ainative doctor
 ```
 
 This will check that all required dependencies are installed.
+
+If you are using `npx` instead of a global install:
+
+```bash
+npx @hari7261/ainative-cli doctor
+```
+
+## Windows global install troubleshooting
+
+If you see an error like:
+
+```text
+EPERM: operation not permitted, mkdir 'C:\Program Files\nodejs\node_modules\@hari7261'
+```
+
+that means npm is trying to install the global package into a protected system directory without Administrator access.
+
+Use one of these fixes:
+
+1. Use `npx` and skip global install entirely:
+
+```bash
+npx @hari7261/ainative-cli init my-app
+```
+
+2. Run PowerShell as Administrator, then install globally:
+
+```bash
+npm install -g @hari7261/ainative-cli
+```
+
+3. Move npm global installs to your user directory:
+
+```bash
+npm config set prefix "$env:APPDATA\\npm"
+npm install -g @hari7261/ainative-cli
+```
+
+Then make sure this directory is on your `PATH`:
+
+```text
+C:\Users\<your-user>\AppData\Roaming\npm
+```
 
 ## Next Steps
 

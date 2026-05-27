@@ -19,6 +19,14 @@ AINative is a React-compatible, AI-native frontend framework where LLMs control 
 
 ### Installation
 
+Recommended:
+
+```bash
+npx @hari7261/ainative-cli init my-app
+```
+
+Optional global install:
+
 ```bash
 npm install -g @hari7261/ainative-cli
 ```
@@ -27,6 +35,14 @@ npm install -g @hari7261/ainative-cli
 
 ```bash
 ainative init my-app
+cd my-app
+npm install
+```
+
+If you are not installing globally, use:
+
+```bash
+npx @hari7261/ainative-cli init my-app
 cd my-app
 npm install
 ```
@@ -50,6 +66,20 @@ npm run dev
 ```
 
 Visit `http://localhost:5173` to see your app!
+
+## Windows note
+
+If global install fails with an `EPERM` error under `C:\Program Files\nodejs\node_modules`, that is a Windows permissions problem, not a CLI package problem. The fastest fix is to use:
+
+```bash
+npx @hari7261/ainative-cli init my-app
+```
+
+You can also run PowerShell as Administrator or move npm's global prefix to:
+
+```text
+C:\Users\<your-user>\AppData\Roaming\npm
+```
 
 ## Basic Example
 

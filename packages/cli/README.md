@@ -27,4 +27,12 @@ cd my-ai-app
 npx @hari7261/ainative-cli dev
 ```
 
+If you prefer a global install:
+
+```bash
+npm install -g @hari7261/ainative-cli
+```
+
+On Windows, if global install fails with an `EPERM` permissions error in `C:\Program Files\nodejs\node_modules`, use `npx` instead, run PowerShell as Administrator, or move npm's global prefix to your user-level npm directory.
+
 For full documentation, visit the [main AINative repository](https://github.com/hari7261/ainative).

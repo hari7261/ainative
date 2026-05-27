@@ -244,10 +244,10 @@ const AI_NATIVE_COMPONENT_STYLES = `
   }
 
   .ai-input-container {
-    border: 1px solid var(--ain-border);
-    border-radius: 16px;
-    background: var(--ain-surface);
-    box-shadow: 0 8px 24px rgba(15, 23, 42, 0.04);
+    border: 0;
+    border-radius: 1.9rem;
+    background: #1f2024;
+    box-shadow: 0 16px 48px rgba(15, 23, 42, 0.18);
   }
 
   .ai-input-attachments {
@@ -263,10 +263,10 @@ const AI_NATIVE_COMPONENT_STYLES = `
     gap: 0.55rem;
     max-width: 100%;
     padding: 0.45rem 0.6rem;
-    border: 1px solid var(--ain-border);
+    border: 1px solid rgba(255, 255, 255, 0.12);
     border-radius: 12px;
-    background: var(--ain-surface-muted);
-    color: var(--ain-text-muted);
+    background: rgba(255, 255, 255, 0.06);
+    color: rgba(238, 243, 251, 0.8);
     font-size: 0.82rem;
   }
 
@@ -281,31 +281,32 @@ const AI_NATIVE_COMPONENT_STYLES = `
     height: 2.5rem;
     border-radius: 10px;
     object-fit: cover;
-    border: 1px solid var(--ain-border);
+    border: 1px solid rgba(255, 255, 255, 0.12);
   }
 
   .ai-input-main {
     display: flex;
     flex-direction: column;
-    gap: 0.85rem;
-    padding: 0.9rem;
+    gap: 0.75rem;
+    padding: 1.05rem 1.15rem 0.95rem;
   }
 
   .ai-input-field {
     width: 100%;
-    min-height: 6rem;
+    min-height: 4.5rem;
     padding: 0;
     border: 0;
     outline: 0;
     resize: none;
     background: transparent;
-    color: var(--ain-text);
+    color: #eff3fb;
     font: inherit;
-    line-height: 1.6;
+    font-size: 1rem;
+    line-height: 1.55;
   }
 
   .ai-input-field::placeholder {
-    color: var(--ain-text-subtle);
+    color: #8fa1c0;
   }
 
   .ai-input-toolbar {
@@ -325,27 +326,52 @@ const AI_NATIVE_COMPONENT_STYLES = `
     flex-wrap: wrap;
   }
 
+  .ai-input-divider {
+    width: 1px;
+    height: 1.35rem;
+    border-radius: 999px;
+    background: rgba(147, 118, 255, 0.45);
+  }
+
   .ai-input-btn,
   .ai-input-submit,
   .ain-secondary-button {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    min-height: 2.5rem;
-    padding: 0.55rem 0.85rem;
-    border: 1px solid var(--ain-border);
-    border-radius: 12px;
-    background: var(--ain-surface);
-    color: var(--ain-text-muted);
+    min-height: 2.4rem;
+    min-width: 2.4rem;
+    padding: 0;
+    border: 0;
+    border-radius: 999px;
+    background: transparent;
+    color: #a7b2c8;
     font: inherit;
     cursor: pointer;
+    transition: background 0.18s ease, color 0.18s ease, transform 0.18s ease;
+  }
+
+  .ai-input-btn:hover,
+  .ai-input-submit:hover,
+  .ain-secondary-button:hover,
+  .ain-mode-toggle:hover {
+    background: rgba(255, 255, 255, 0.08);
+    color: #eff3fb;
+  }
+
+  .ai-input-btn svg,
+  .ai-input-submit svg,
+  .ain-mode-toggle svg {
+    width: 1.1rem;
+    height: 1.1rem;
   }
 
   .ai-input-submit {
-    border-color: var(--ain-accent);
-    background: var(--ain-accent);
-    color: #ffffff;
-    font-weight: 600;
+    min-height: 2.75rem;
+    min-width: 2.75rem;
+    background: #ffffff;
+    color: #1f2024;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.16);
   }
 
   .ai-input-submit:disabled,
@@ -357,6 +383,36 @@ const AI_NATIVE_COMPONENT_STYLES = `
 
   .ain-secondary-button[data-variant="danger"] {
     color: var(--ain-danger);
+  }
+
+  .ain-secondary-button {
+    min-width: auto;
+    padding: 0.45rem 0.7rem;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    background: rgba(255, 255, 255, 0.04);
+    color: rgba(238, 243, 251, 0.85);
+  }
+
+  .ain-chip {
+    border-color: rgba(255, 255, 255, 0.08);
+    background: rgba(255, 255, 255, 0.04);
+    color: #8fa1c0;
+  }
+
+  .ain-mode-toggle {
+    min-height: 2.25rem;
+    min-width: 2.25rem;
+    padding: 0;
+    border: 0;
+    border-radius: 999px;
+    background: transparent;
+    color: #a7b2c8;
+    transition: background 0.18s ease, color 0.18s ease, transform 0.18s ease;
+  }
+
+  .ain-mode-toggle[data-active="true"] {
+    background: rgba(255, 255, 255, 0.1);
+    color: #ffffff;
   }
 
   .ain-footer {
@@ -448,6 +504,11 @@ const AI_NATIVE_COMPONENT_STYLES = `
     .ai-input-toolbar {
       flex-direction: column;
       align-items: stretch;
+    }
+
+    .ai-input-toolbar-left,
+    .ai-input-toolbar-right {
+      justify-content: space-between;
     }
   }
 `;
